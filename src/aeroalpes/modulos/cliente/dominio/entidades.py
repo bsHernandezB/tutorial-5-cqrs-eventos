@@ -13,7 +13,7 @@ from .objetos_valor import Nombre, Email, Cedula, Rut
 @dataclass
 class Usuario(Entidad):
     nombre: Nombre = field(default_factory=Nombre)
-    email: Email = field(default_factory=Email)
+    email: Email = field(default_factory=Email) 
 
 @dataclass
 class ClienteNatural(Usuario):
