@@ -7,7 +7,7 @@ from datetime import datetime
 
 class MapeadorCompaniaDTOJson(AppMap):
     def externo_a_dto(self, externo: dict) -> CompaniaDTO:
-        compania_dto = CompaniaDTO("","","",externo.get('nombre'), externo.get('numero'), externo.get('tipo'))
+        compania_dto = CompaniaDTO("","","",externo.get('nombre', str), externo.get('numero', str), externo.get('tipo', str))
 
         return compania_dto
 
@@ -34,6 +34,8 @@ class MapeadorCompania(RepMap):
 
     def entidad_a_dto(self, entidad: Compania) -> CompaniaDTO:
         
+        print(entidad.fecha_creacion)
+
         fecha_creacion = entidad.fecha_creacion.strftime(self._FORMATO_FECHA)
         fecha_actualizacion = entidad.fecha_actualizacion.strftime(self._FORMATO_FECHA)
         _id = str(entidad.id)
@@ -61,7 +63,7 @@ class MapeadorCompania(RepMap):
         return CompaniaDTO(fecha_creacion, fecha_actualizacion, _id)
 
     def dto_a_entidad(self, dto: CompaniaDTO) -> Compania:
-        compania = Compania(dto.id, dto.fecha_creacion, dto.fecha_actualizacion, list(), None, dto.nombre, dto.numero, dto.tipo)
+        compania = Compania(nombre=dto.nombre, numero=dto.numero, tipo=dto.tipo)
         
         return compania
 

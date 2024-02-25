@@ -19,7 +19,6 @@ class _FabricaCompania(Fabrica):
         if isinstance(obj, Entidad):
             return mapeador.entidad_a_dto(obj)
         else:
-            print(obj)
             compania: Compania = mapeador.dto_a_entidad(obj)
             
 

@@ -26,13 +26,16 @@ class ServicioCompania(Servicio):
     
     def crear_compania(self, compania_dto: CompaniaDTO) -> CompaniaDTO:
         compania: Compania = self.fabrica_companias.crear_objeto(compania_dto, MapeadorCompania())
-        compania.crear_reserva(compania)
+        # compania.crear_reserva(compania)
 
         # repositorio = self.fabrica_repositorio.crear_objeto(RepositorioCompanias.__class__)
 
         # UnidadTrabajoPuerto.registrar_batch(repositorio.agregar, compania)
         # UnidadTrabajoPuerto.savepoint()
         # UnidadTrabajoPuerto.commit()
+
+        repositorio = self.fabrica_repositorio.crear_objeto(RepositorioCompanias.__class__)
+        repositorio.agregar(compania) # quitar al pasar a eventos
 
         return self.fabrica_companias.crear_objeto(compania, MapeadorCompania())
 
