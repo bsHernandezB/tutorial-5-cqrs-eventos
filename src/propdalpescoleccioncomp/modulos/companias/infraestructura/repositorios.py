@@ -1,6 +1,5 @@
 from propdalpescoleccioncomp.config.db import db
 from propdalpescoleccioncomp.modulos.companias.dominio.repositorios import RepositorioCompanias
-from propdalpescoleccioncomp.modulos.companias.dominio.objetos_valor import NombreAero, Odo, Leg, Segmento, Itinerario, CodigoIATA
 from propdalpescoleccioncomp.modulos.companias.dominio.entidades import Compania
 from propdalpescoleccioncomp.modulos.companias.dominio.fabricas import FabricaCompanias
 from .dto import Compania as CompaniaDTO

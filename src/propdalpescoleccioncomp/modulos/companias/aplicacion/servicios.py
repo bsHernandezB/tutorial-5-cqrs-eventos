@@ -24,7 +24,7 @@ class ServicioCompania(Servicio):
     def fabrica_companias(self):
         return self._fabrica_companias       
     
-    def crear_reserva(self, compania_dto: CompaniaDTO) -> CompaniaDTO:
+    def crear_compania(self, compania_dto: CompaniaDTO) -> CompaniaDTO:
         compania: Compania = self.fabrica_companias.crear_objeto(compania_dto, MapeadorCompania())
         compania.crear_reserva(compania)
 
@@ -36,7 +36,7 @@ class ServicioCompania(Servicio):
 
         return self.fabrica_companias.crear_objeto(compania, MapeadorCompania())
 
-    def obtener_reserva_por_id(self, id) -> CompaniaDTO:
+    def obtener_compania_por_id(self, id) -> CompaniaDTO:
         repositorio = self.fabrica_repositorio.crear_objeto(RepositorioCompanias.__class__)
         return self.fabrica_companias.crear_objeto(repositorio.obtener_por_id(id), MapeadorCompania())
 

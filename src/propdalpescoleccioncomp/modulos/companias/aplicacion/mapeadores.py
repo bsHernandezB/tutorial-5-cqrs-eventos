@@ -1,14 +1,13 @@
 from propdalpescoleccioncomp.seedwork.aplicacion.dto import Mapeador as AppMap
 from propdalpescoleccioncomp.seedwork.dominio.repositorios import Mapeador as RepMap
 from propdalpescoleccioncomp.modulos.companias.dominio.entidades import Compania
-from propdalpescoleccioncomp.modulos.companias.dominio.objetos_valor import Itinerario, Odo, Segmento, Leg
 from .dto import CompaniaDTO
 
 from datetime import datetime
 
 class MapeadorCompaniaDTOJson(AppMap):
     def externo_a_dto(self, externo: dict) -> CompaniaDTO:
-        compania_dto = CompaniaDTO()
+        compania_dto = CompaniaDTO("","","",externo.get('nombre'), externo.get('numero'), externo.get('tipo'))
 
         return compania_dto
 
@@ -62,7 +61,7 @@ class MapeadorCompania(RepMap):
         return CompaniaDTO(fecha_creacion, fecha_actualizacion, _id)
 
     def dto_a_entidad(self, dto: CompaniaDTO) -> Compania:
-        compania = Compania()
+        compania = Compania(dto.id, dto.fecha_creacion, dto.fecha_actualizacion, list(), None, dto.nombre, dto.numero, dto.tipo)
         
         return compania
 
